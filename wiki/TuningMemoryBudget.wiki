@@ -1,4 +1,5 @@
 #summary Performance issues related to memory budget and input size.
+#labels Phase-Design
 
 = Introduction =
 
@@ -6,8 +7,8 @@ The code was designed to work with a fixed memory budget, regardless of input si
 
 = Details =
 
-Three flags affect memory allocations:
+The encoder uses a buffer for the source input(of size set by the command-line flag -B). To ensure the source input is read *sequentially*, with no backward seeks, the encoder maintains the source "horizon" at half the *source buffer size* ahead of the input position. A source copy will not be found if it lies more than half the source buffer size away from its position in the stream being compressed.
 
-  * =-M= (default 262,144)
-  * =-B= (default 8,388,608)
-  * =-W= (default 262,144)
+For large files, -B should be raised. The default is 8 megabytes.
+
+TODO: this needs to be improved.
