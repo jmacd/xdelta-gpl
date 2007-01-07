@@ -1,0 +1,25 @@
+#summary Command-line flags and usage.
+
+= Introduction =
+
+The command-line syntax is like *gzip*, with the additional option -s SOURCE.
+
+Like gzip, -d means to decompress. The default mode (-e) is to compress.
+
+For output, -c and -f flags behave likewise (use standard output, force overwrite).
+
+Unlike gzip, xdelta3 defaults to stdout (instead of having an automatic extension).
+
+Without -s SOURCE, xdelta3 behaves like gzip for stdin/stdout purposes.
+
+Compress examples:
+
+xdelta3 -s SOURCE TARGET > OUT<br>
+xdelta3 -s SOURCE TARGET OUT<br>
+xdelta3 -s SOURCE < TARGET > OUT
+
+Decompress examples:
+
+xdelta3 -d -s SOURCE OUT > TARGET<br>
+xdelta3 -d -s SOURCE OUT TARGET<br>
+xdelta3 -d -s SOURCE < OUT > TARGET
