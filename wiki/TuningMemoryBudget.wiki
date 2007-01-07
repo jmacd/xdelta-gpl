@@ -1,0 +1,13 @@
+#summary Performance issues related to memory budget and input size.
+
+= Introduction =
+
+The code was designed to work with a fixed memory budget, regardless of input size.  Sometimes bad compression performance results from an insufficient memory budget.
+
+= Details =
+
+Three flags affect memory allocations:
+
+  * =-M= (default 262,144)
+  * =-B= (default 8,388,608)
+  * =-W= (default 262,144)
