@@ -7,8 +7,6 @@ The code was designed to work with a fixed memory budget, regardless of input si
 
 = Details =
 
-The encoder uses a buffer for the source input(of size set by the command-line flag -B). To ensure the source input is read *sequentially*, with no backward seeks, the encoder maintains the source "horizon" at half the *source buffer size* ahead of the input position. A source copy will not be found if it lies more than half the source buffer size away from its position in the stream being compressed.
+The encoder uses a buffer for the source input(of size set by the command-line flag -B). To ensure the source input is read *sequentially*, with no backward seeks, the encoder maintains the source "horizon" at half the *source buffer size* ahead of the input position. A source copy will not be found if it lies more than half the source buffer size away from its position in the input stream.
 
-For large files, -B should be raised. The default is 8 megabytes.
-
-TODO: this needs to be improved.
+For large files, -B may need to be raised. The default is 64 megabytes.
