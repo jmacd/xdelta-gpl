@@ -16,8 +16,8 @@ Without -s SOURCE, xdelta3 behaves like gzip for stdin/stdout purposes.
 Compress examples:
 
 {{{
-xdelta3 -s SOURCE TARGET > OUT<br>
-xdelta3 -s SOURCE TARGET OUT<br>
+xdelta3 -s SOURCE TARGET > OUT
+xdelta3 -s SOURCE TARGET OUT
 xdelta3 -s SOURCE < TARGET > OUT
 }}}
 
