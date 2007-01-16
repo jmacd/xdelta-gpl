@@ -1,4 +1,5 @@
 #summary Treating externally-compressed inputs.
+#labels Featured
 
 = Introduction =
 
