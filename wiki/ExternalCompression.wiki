@@ -1,0 +1,22 @@
+#summary Treating externally-compressed inputs.
+
+= Introduction =
+
+To compute a delta between _externally-compressed_ inputs (e.g., `xdelta3 -e -s source.gz target.gz`), xdelta3 recognizes several common compression programs and uncompresses the data before reading it, including `gzip`, `bzip2`, and `compress`. When the decoder finishes decompression, it re-applies the external compression.
+
+= Details =
+
+Xdelta decompresses the input stream (target) using pipes to the external compression program; it decompresses the source file to a temporary file. There is a hard-coded maximum size of 16MB for external compression.
+
+Recognition of externally-compressed inputs can be disabled by `-D`.
+
+External compression has a well known problem: it is difficult to recompress with the original compression settings, which breaks checksum verification of the compressed data. External recompression (of the output) can be disabled by `-R`.
+
+Example:
+
+{{{
+gzip release-1.tar
+gzip release-2.tar
+xdelta3 -s release-1.tar.gz release-2.tar.gz delta.xd3
+xdelta3 -s release-1.tar.gz delta.xd3 release-2.tar.gz
+}}}
