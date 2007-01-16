@@ -61,4 +61,9 @@ compression options:
    -N           disable small string-matching compression
    -D           disable external decompression (encode/decode)
    -R           disable external recompression (decode)
+   -n           disable checksum (encode/decode)
+   -C           soft config (encode, undocumented)
+   -A [apphead] disable/provide application header (encode)
 }}}
+
+The `-A` flag may be used to set application-specific data in the VCDIFF header (you may view with `xdelta3 printhdr`). By default, the application-specific data includes the source and input filenames, as well as descriptors to help with ExternalCompression. You can disable the application header with `-A=`.
