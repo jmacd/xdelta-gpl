@@ -1,5 +1,5 @@
 #summary Performance issues related to memory budget and input size.
-#labels Phase-Design,Featured
+#labels Featured
 
 = Introduction =
 
