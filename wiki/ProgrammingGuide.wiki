@@ -1,7 +1,7 @@
 #summary C and C++ API
 #labels Featured
 
-=Programming Guide=
+=Introduction=
 
 This guide intends to give you a quick start to the Xdelta3 programming
 interface.  This is not a complete reference, the comments inside source file
