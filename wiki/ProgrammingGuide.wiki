@@ -1,12 +1,10 @@
 #labels Featured
-=Introduction=
+=Stream Interface=
 
 This guide intends to give you a quick start to the Xdelta3 programming
 interface.  This is not a complete reference, the comments inside source file
 `xdelta3.h` and the command-line application,
 `xdelta3-main.h` offer more complete information.
-
-=Stream Interface=
 
 To begin with, there are three external structures, only two of which are
 discussed here.  The `xd3_stream` struct plays the main role, one
