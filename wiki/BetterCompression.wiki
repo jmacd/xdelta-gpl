@@ -9,16 +9,13 @@
 
 Xdelta3 
 
-The flags `-1`, ... `-9` flags support alternate compression levels: faster/better compression options. If you want fastest compression, try `-1`. If you want best compression, try `-9`.
+The flags `-1`, ... `-9` flags support alternate compression levels: faster/better compression options. If you want fastest compression, try `-1`. If you want best compression, try `-9`. Even better compression can be achieved using a variable-bit-length encoding, i.e., secondary compression.  Xdelta3 supports a method called DJW, enabled by the command-line flag `-S djw`.
 
-Even better compression can be achieved using a variable-bit-length encoding, i.e., secondary compression.  Xdelta3 supports a method called DJW, enabled by the command-line flag `-S djw`.
+Named after [http://www.thocp.net/biographies/wheeler_david.htm Wheeler]. DJW described this encoding to follow the [http://en.wikipedia.org/wiki/Burrows-Wheeler_transform Burrows-Wheeler] transform, a sort of semi-adaptive Huffman code implemented in [http://en.wikipedia.org/wiki/Bzip2 bzip2] (following the Burrows-Wheeler transform). DJW's [ftp://ftp.cl.cam.ac.uk/users/djw3/bred3.ps decription], DJW's [ftp://ftp.cl.cam.ac.uk/users/djw3/bred3.c code]. The algorithm works with multiple Huffman-code tables and several iterations. The input is divided into fixed-length chunks, each chunk assigned to a Huffman table. Each iteration, chunks are assigned to the table which gives the shortest encoding, then the tables are recomputed according to the chunks they were assigned.
 
-Named after David J. Wheeler. Most compression programs are based on [http://en.wikipedia.org/wiki/Huffman_coding Huffman] coding. There's a well-known Burrows-Wheeler [http://en.wikipedia.org/wiki/Burrows-Wheeler_transform transform], which is the first pass used by [http://www.bzip.org bzip2]. There's more to it, by [http://www.thocp.net/biographies/wheeler_david.htm Wheeler]. DJW describes a method of encoding the data after the first transform: the [ftp://ftp.cl.cam.ac.uk/users/djw3/bred3.ps decription], the [ftp://ftp.cl.cam.ac.uk/users/djw3/bred3.c code].
-
-The algorithm works with multiple Huffman-code tables and several iterations. The input is divided into fixed-length chunks, each chunk assigned to a Huffman table. Each iteration, chunks are assigned to the table which gives the shortest encoding, then the tables are recomputed according to the chunks they were assigned.
-
-The chunk encodings plus the chunk&ndash;table assignments are then transformed by [http://en.wikipedia.org/wiki/Move-to-front_transform move-to-front]. Move-to-front works very well (especially following Burrows-Wheeler), but it presents another problem for later Huffman coding, because after move-to-front coding there tend to be many `0`s, and a symbol having frequency greater than 50% will not be efficiently encoded by Huffman coding--even the shortest 1-bit code has redundency. To address this problem, the `0` symbol is replaced by two symbols (call them `0_0` and `0_1`).  These two symbols are used to code the run-length of `0`s in binary.
+The chunk encodings plus the chunk-table assignments are then transformed by [http://en.wikipedia.org/wiki/Move-to-front_transform move-to-front]. Move-to-front works very well (especially following Burrows-Wheeler), but it presents another problem for later Huffman coding, because after move-to-front coding there tend to be many `0`s, and a symbol having frequency greater than 50% will not be efficiently encoded by Huffman coding--even the shortest 1-bit code has redundency. To address this problem, the `0` symbol is replaced by two symbols (call them `0_0` and `0_1`).  These two symbols are used to code the run-length of `0`s in binary.
 
 Xdelta3 implements alternate code tables, but no work has been done on their optimization potential.  See the -DGENERIC_ENCODE_TABLES=1 flag and related tests, which are not compiled by default.
 
 See also: [http://www.daemonology.net/bsdiff/ bsdiff] is another differential compression program, based on bzip2.
+
