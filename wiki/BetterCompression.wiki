@@ -7,8 +7,6 @@
 
 = Details =
 
-Xdelta3 
-
 The flags `-1`, ... `-9` flags support alternate compression levels: faster/better compression options. If you want fastest compression, try `-1`. If you want best compression, try `-9`. Even better compression can be achieved using a variable-bit-length encoding, i.e., secondary compression.  Xdelta3 supports a method called DJW, enabled by the command-line flag `-S djw`.
 
 Named after [http://www.thocp.net/biographies/wheeler_david.htm Wheeler]. DJW described this encoding to follow the [http://en.wikipedia.org/wiki/Burrows-Wheeler_transform Burrows-Wheeler] transform, a sort of semi-adaptive Huffman code implemented in [http://en.wikipedia.org/wiki/Bzip2 bzip2] (following the Burrows-Wheeler transform). DJW's [ftp://ftp.cl.cam.ac.uk/users/djw3/bred3.ps decription], DJW's [ftp://ftp.cl.cam.ac.uk/users/djw3/bred3.c code]. The algorithm works with multiple Huffman-code tables and several iterations. The input is divided into fixed-length chunks, each chunk assigned to a Huffman table. Each iteration, chunks are assigned to the table which gives the shortest encoding, then the tables are recomputed according to the chunks they were assigned.
