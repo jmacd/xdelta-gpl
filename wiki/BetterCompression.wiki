@@ -1,4 +1,5 @@
 #summary Better compression options
+#labels Featured
 
 = Introduction =
 
