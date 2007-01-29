@@ -1,0 +1,13 @@
+#summary Related open-source projects
+#labels Featured
+
+= Open-source Projects Using Xdelta3 =
+
+  # [http://code.google.com/p/hotcakes/ Hotcakes] Linux storage replication uses xdelta3 API
+
+= Open-source Projects Using VCDIFF =
+
+  # [http://www.pobox.com/~skeet/csharp/miscutil C# VCDIFF decoder] by Jon Skeet
+
+
+
