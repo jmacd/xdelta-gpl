@@ -18,6 +18,6 @@ Example:
 {{{
 gzip release-1.tar
 gzip release-2.tar
-xdelta3 -s release-1.tar.gz release-2.tar.gz delta.xd3
-xdelta3 -s release-1.tar.gz delta.xd3 release-2.tar.gz
+xdelta3 -e -s release-1.tar.gz release-2.tar.gz delta-1-2.xd3
+xdelta3 -d -s release-1.tar.gz delta-1-2.xd3 release-2.tar.gz
 }}}
