@@ -28,10 +28,8 @@ source_file = ...
 target_file = ...
 command_args = ['xdelta3', '-f', '-s', source_file, target_file, output_file]
 
-# command_args[0] is ignored
 xdelta3.xd3_main_cmdline(command_args)
 
 # same as
 xdelta3main.xd3_main_cmdline(command_args)
 }}}
-
