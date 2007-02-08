@@ -1,11 +1,11 @@
-#summary Swig wrappers
+#summary Python and Swig support
 #labels Featured
 
 = Scripting languages =
 
 A Python module named xdelta3main installs via `setup.py`, supports a single method: `xdelta3main.xd3_main_cmdline()`, which runs the `xdelta3` main() without os.fork() and os.execl().
 
-Swig support was added later. The xdelta3 module exports `xdelta3.xd3_encode_memory()`, `xdelta3.xdelta3_decode_memory()`, and `xdelta3.xd3_main_cmdline()`. See `xdelta3-test.py` and `xdelta3-regtest.py` for examples.
+The (Swig) xdelta3 module exports `xdelta3.xd3_encode_memory()`, `xdelta3.xdelta3_decode_memory()`, and `xdelta3.xd3_main_cmdline()`. See `xdelta3-test.py` and `xdelta3-regtest.py` for examples.
 
 {{{
 import xdelta3
