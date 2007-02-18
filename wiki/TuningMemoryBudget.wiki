@@ -15,6 +15,8 @@ For large files, -B may need to be raised. The default is 64MB.  This means data
 
 The minimum value of -B is 16KB.
 
+The source file is not mmaped, it is read into the source buffer (Xdelta-1.x used mmap()).
+
 = Input window size =
 
 The input window size (set by -W) determines how much of the input is compressed in a single VCDIFF window.  Smaller windows have higher compression cost and take less memory to decode.  Larger windows have better compression but only up to a point, because large-window addresses take more bits to encode.
