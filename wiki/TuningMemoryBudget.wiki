@@ -3,7 +3,9 @@
 
 = Introduction =
 
-The code was designed to work with a fixed memory budget, regardless of input size.  Sometimes bad compression performance results from an insufficient memory budget.
+There are four memory-cost parameters that determine compression performance, independent of compression level. The code was designed to work with a fixed memory budget, regardless of input size: bad compression performance may result from an insufficient memory budget.
+
+Defaults are automatically lowered for small files.
 
 = Source buffer size =
 
@@ -15,14 +17,16 @@ The minimum value of -B is 16KB.
 
 = Input window size =
 
-The input window size (set by -W) determines how much of the input is compressed in a single VCDIFF window.  The default is 256KB.  The minumim value is 16KB, and the maximum value is 16MB.
+The input window size (set by -W) determines how much of the input is compressed in a single VCDIFF window.  Smaller windows have higher compression cost and take less memory to decode.  Larger windows have better compression but only up to a point, because large-window addresses take more bits to encode.
 
-There is no real benefit to having an especially small or large input window: if it is too small, window overhead will be a problem. If the window becomes very large, addresses begin taking more bits to encode.
+The default is 8MB.  The minumim value is 16KB. The maximum value is 16MB.
 
 = Instruction buffer size =
 
-The instruction buffer saves potential encodings, (possibly) overlapping copy instructions, while it looks ahead in the input. The size of this buffer can be set on the command line via `-I size`, the default is 4096 slots. An unlimited instruction buffer is supported with `-I 0`.
+The instruction buffer saves potential encodings, (possibly) overlapping copy instructions, while it looks ahead in the input. The size of this buffer can be set on the command line via `-I size`, the default is 32K slots. An unlimited instruction buffer is supported with `-I 0`.
 
 An unencoded instruction occupies 28 bytes, so limiting buffer size does have advantages. On the other hand, the minimum/maximum source address have to be decided before encoding the first instruction, so letting the buffer fill before finishing a window can cause bad compression for the remaining input window.
 
-~~Version 3.0k and earlier used a default of 128 entries.~~  ~~Version 3.0l and earlier did not support `-I`.~~
+= Compression duplicates size =
+
+The compressor uses an array of duplicate positions (set by -P) to find better matches in the target (not the source). This should be less than or equal to the input window size (-W).  The default is 256K slots.
