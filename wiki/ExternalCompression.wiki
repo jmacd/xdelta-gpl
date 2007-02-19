@@ -7,7 +7,7 @@ To compute a delta between _externally-compressed_ inputs (e.g., `xdelta3 -e -s 
 
 = Details =
 
-Xdelta decompresses the input stream (target) using pipes to the external compression program; it decompresses the source file to a temporary file. There is a hard-coded maximum size of 16MB for external compression.
+Xdelta decompresses the input stream (target) using pipes to the external compression program; it decompresses the source file to a temporary file. There is a hard-coded maximum size of 256MB for external compression.
 
 Recognition of externally-compressed inputs can be disabled by `-D`.
 
