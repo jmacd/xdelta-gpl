@@ -1,4 +1,5 @@
 #summary GPL issues and commercial licenses
+#labels Featured
 
 = Introduction =
 
