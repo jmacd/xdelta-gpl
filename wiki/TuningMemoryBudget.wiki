@@ -36,3 +36,11 @@ The compressor uses an array of duplicate positions (set by -P) to find better m
 = Compression level =
 
 The compression level (-0, -1, -3, -6, -9) determines the size of two internal data structures.  -9 takes about four times as much memory as -1.
+
+= Decoder memory requirements =
+
+To decode a VCDIFF input, the -B and -W flags are used similar to the encoding step.  For the source buffer, the value of -B or the source file size is used, whichever is smaller.  Setting -B smaller than the value used for encode will result in seeking (an LRU cache of blocks is used).  
+
+An input buffer is sized according to -W, and in addition to this, the decoder will allocate three buffers for the data, address, and instruction sections of a VCDIFF window.  The size of these buffers depends on the compressed size of a window, meaning their size depends on the value of -W used by the encoder.  If secondary compression is used, an extra set of buffers will be allocated for each secondary-compressed section.
+
+To summarize, decoding uses -B bytes for the source buffer, plus -W bytes for its own input buffer, and three or six buffers which should total not more than one or two times the encoder's value of -W (depending on secondary compression).
