@@ -5,6 +5,8 @@
 
 To compute a delta between _externally-compressed_ inputs (e.g., `xdelta3 -e -s source.gz target.gz`), xdelta3 recognizes several common compression programs and uncompresses the data before reading it, including `gzip`, `bzip2`, and `compress`. When the decoder finishes decompression, it re-applies the external compression.
 
+External compression is not supported on Windows.  Windows users should manually decompress the inputs prior to running xdelta3 (sorry).
+
 = Details =
 
 Xdelta decompresses the inputs using pipes to the external compression program.
