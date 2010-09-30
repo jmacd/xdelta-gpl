@@ -5,7 +5,7 @@ How to compress when both the source and the target are streams, named pipes, et
 
 It is possible to read the *source file* from a FIFO or a named pipe. The *encoder* is designed not to seek backward, but this has implications for the *decoder* memory budget.
 
-= Details =
+== Details ==
 
 The source window size (set by the -B flag) used for the decoder must be *greater than or equal to* the source window size used for the encoder.
 
