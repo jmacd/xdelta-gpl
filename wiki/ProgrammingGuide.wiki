@@ -8,9 +8,16 @@ interface.  This is not a complete reference, the comments inside source file
 `xdelta3.h` and the command-line application,
 `xdelta3-main.h` offer more complete information.
 
-==Stream Programming==
+==Simple API==
 
-To begin with, there are three external structures, only two of which are
+There are two convenience functions for encoding to and decoding from
+in-memory buffers.  See the `xd3_encode_memory` and
+`xd3_decode_memory` interfaces.
+
+
+==Advanced API==
+
+There are three external structures, only two of which are
 discussed here.  The `xd3_stream` struct plays the main role, one
 of these contains the state necessary to encode or decode one stream of data.
 An `xd3_source` struct maintains state about the (optional) source
@@ -154,11 +161,6 @@ involves no input or output.  The `xd3_free_stream()` routine frees
 all memory allocated by the stream.
 
 ==Misc==
-
-
-There are two convenience functions for encoding to and decoding from
-in-memory buffers.  See the `xd3_encode_completely` and
-`xd3_decode_completely` interfaces.
 
 
 There are two routines to get and set the application header.  When
