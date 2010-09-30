@@ -108,7 +108,7 @@ codes are:
 
   * `XD3_OUTPUT`: The stream has pending output.  The application should write or otherwise consume the block of data found in the xd3_stream fields `next_out` and `avail_out`,then call `xd3_consume_output`.
 
-  * `XD3_GETSRCBLK`: The stream is requesting a source block be read,as described above.  This is only ever returned if the xd3_getblk callback was not provided.
+  * `XD3_GETSRCBLK`: The stream is requesting a source block be read,as described above.  This is only returned when the xd3_getblk callback was not provided.
 
   * `XD3_GOTHEADER`: This decoder-specific code indicates that the first VCDIFF window header has been received.  This gives the application a chance to inspect the application header before encoding the first window.
 
@@ -162,6 +162,6 @@ in-memory buffers.  See the `xd3_encode_completely` and
 
 
 There are two routines to get and set the application header.  When
-encoding, sthe application header must be set before the first
+encoding, the application header must be set before the first
 `XD3_WINSTART`.  When decoding, the application header is available
 after after the first `XD3_GOTHEADER`.
