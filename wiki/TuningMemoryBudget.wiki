@@ -5,7 +5,9 @@
 
 There are five memory-cost parameters that determine compression performance, independent of compression level. The code was designed to work with a fixed memory budget, regardless of input size: bad compression performance may result from an insufficient memory budget.
 
-Defaults are automatically lowered for small files.
+Defaults are automatically lowered for small files.  
+
+Note: _all flags are set in bytes, so for example to set a 512MB source buffer you must pass -B536870912._
 
 = Source buffer size =
 
